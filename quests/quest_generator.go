@@ -54,7 +54,7 @@ func GenerateRandomDailyQuests(expiration int64, questID int, levelIdFunc LevelI
 	}
 
 	return &DailyQuests{
-		Version:    0,
+		Version:    1,
 		Expiration: expiration,
 		QuestsID:   questID,
 		Quests: []any{
