@@ -2,6 +2,7 @@ package quests
 
 import (
 	"math/rand"
+	"time"
 )
 
 func getRandomElement[T any](arr []T) T {
@@ -53,15 +54,34 @@ func GenerateRandomDailyQuests(expiration int64, questID int, levelIdFunc LevelI
 		}
 	}
 
+	quests := []any{
+		scoreQuest,
+		destroyEnemiesQuest,
+		surviveQuest,
+	}
+
+	// Additional christmas quest with double XP and goal on 24th and 25th December
+	day := time.Now().Day()
+	if time.Now().Month() == time.December && (day == 24 || day == 25) {
+		for {
+			christmasQuest, errChristmas := RandomDestroyEnemiesQuest(levelIdFunc)
+			if errChristmas != nil {
+				return nil, errChristmas
+			}
+			if !areLevelsEqual(christmasQuest.Levels, destroyEnemiesQuest.Levels) {
+				christmasQuest.XP *= 2
+				christmasQuest.Goal *= 2
+				quests = append(quests, christmasQuest)
+				break
+			}
+		}
+	}
+
 	return &DailyQuests{
 		Version:    1,
 		Expiration: expiration,
 		QuestsID:   questID,
-		Quests: []any{
-			scoreQuest,
-			destroyEnemiesQuest,
-			surviveQuest,
-		},
+		Quests:     quests,
 	}, nil
 }
 
