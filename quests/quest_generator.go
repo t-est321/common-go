@@ -132,6 +132,7 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		{[]Level{oasis}, inertiac, 15},
 		{[]Level{oasis}, rollingCube, 20},
 		{[]Level{oasis}, mothership, 50},
+		{[]Level{oasis}, exploder, 30},
 
 		// Featured community levels
 		{[]Level{cozone}, asteroid, 1000},
