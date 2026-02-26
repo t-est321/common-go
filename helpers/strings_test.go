@@ -12,10 +12,10 @@ import (
 
 func TestStringToExpandedChars(t *testing.T) {
 	expected := []common_helpers.ExpandedChar{
-		{Char: 'M', Color: 0xffff00ff},
-		{Char: 'ū', Color: 0xffff00ff},
-		{Char: 's', Color: 0xffff00ff},
-		{Char: 'ų', Color: 0xffff00ff},
+		{Char: 'M', Color: 0xffffffff},
+		{Char: 'ū', Color: 0xffffffff},
+		{Char: 's', Color: 0xffffffff},
+		{Char: 'ų', Color: 0xffffffff},
 		{Char: 'Š', Color: 0x007fffff},
 		{Char: 'o', Color: 0x007fffff},
 		{Char: 'k', Color: 0xffff00ff},
@@ -26,7 +26,7 @@ func TestStringToExpandedChars(t *testing.T) {
 		{Char: 'm', Color: 0xffff00ff},
 	}
 
-	actual := common_helpers.StringToExpandedChars("#ffff00ffMūsų#007fffffŠo#ffff00ffk#00ffffffi#000000ffų#ffff00ffPam")
+	actual := common_helpers.StringToExpandedChars("Mūsų#007fffffŠo#ffff00ffk#00ffffffi#000000ffų#ffff00ffPam")
 
 	assert.Equal(t, expected, actual)
 }

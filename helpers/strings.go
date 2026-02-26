@@ -18,7 +18,7 @@ func StringToExpandedChars(str string) []ExpandedChar {
 
 	expandedChars := make([]ExpandedChar, 0)
 	escapedChar := false
-	var currentColor uint32
+	var currentColor uint32 = 0xffffffff
 	for {
 		char, _, err := buffer.ReadRune()
 		if err != nil {
